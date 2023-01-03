@@ -12,12 +12,21 @@ services:
       - ./env/mongo.env
     # networks: 
     #   - goals-net
-  # backend:
-    # build: ./backend
+  backend:
+    build: ./backend
     # build: 
     #   context: ./backend
-  
+    #   dockerfile: Dockerfile
+    #   args:
+    #     some-arg: 1
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
   # frontend:
 
 volumes:
   data: 
+  logs:
